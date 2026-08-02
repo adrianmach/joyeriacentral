@@ -1,0 +1,112 @@
+{
+  "categories": [
+    {
+      "id": "relojes",
+      "name": "Relojes",
+      "order": 1
+    },
+    {
+      "id": "joyas-plata-oro",
+      "name": "Joyas de plata y oro",
+      "order": 2
+    },
+    {
+      "id": "joyas-acero",
+      "name": "Joyas de acero",
+      "order": 3
+    },
+    {
+      "id": "enchapados",
+      "name": "Enchapados",
+      "order": 4
+    },
+    {
+      "id": "biyuterie",
+      "name": "Biyuterie",
+      "order": 5
+    },
+    {
+      "id": "plata",
+      "name": "Plata",
+      "order": 6
+    },
+    {
+      "id": "oro-9k",
+      "name": "Oro 9k",
+      "order": 7
+    },
+    {
+      "id": "oro-10k",
+      "name": "Oro 10k",
+      "order": 8
+    },
+    {
+      "id": "oro-18k",
+      "name": "Oro 18k",
+      "order": 9
+    },
+    {
+      "id": "lapiceras",
+      "name": "Lapiceras",
+      "order": 10
+    },
+    {
+      "id": "otros-productos",
+      "name": "Otros productos",
+      "order": 11
+    }
+  ],
+  "products": [
+    {
+      "id": "b3e1a2b4-1111-4a2b-8c3d-000000000001",
+      "name": "Reloj QQ de hombre",
+      "slug": "reloj-qq-de-hombre",
+      "description": "Reloj clásico de hombre, correa de acero, resistente al agua.",
+      "price": 1990,
+      "comparePrice": null,
+      "currency": "UYU",
+      "category": "relojes",
+      "tags": ["nuevo"],
+      "images": [],
+      "inStock": true,
+      "featured": true,
+      "order": 1,
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "b3e1a2b4-1111-4a2b-8c3d-000000000002",
+      "name": "Anillo de plata 925 con circonia",
+      "slug": "anillo-de-plata-925-con-circonia",
+      "description": "Anillo de plata 925 con piedra de circonia blanca, diseño elegante.",
+      "price": 1290,
+      "comparePrice": 1590,
+      "currency": "UYU",
+      "category": "joyas-plata-oro",
+      "tags": ["oferta"],
+      "images": [],
+      "inStock": true,
+      "featured": true,
+      "order": 1,
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "b3e1a2b4-1111-4a2b-8c3d-000000000003",
+      "name": "Cadena de acero quirúrgico",
+      "slug": "cadena-de-acero-quirurgico",
+      "description": "Cadena de acero quirúrgico, no pierde brillo, ideal para uso diario.",
+      "price": 890,
+      "comparePrice": null,
+      "currency": "UYU",
+      "category": "joyas-acero",
+      "tags": ["destacado"],
+      "images": [],
+      "inStock": true,
+      "featured": false,
+      "order": 1,
+      "createdAt": "2025-01-01T00:00:00.000Z",
+      "updatedAt": "2025-01-01T00:00:00.000Z"
+    }
+  ]
+}

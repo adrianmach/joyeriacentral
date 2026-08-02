@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyería Central — Joyas, Relojes y Reparaciones en Las Piedras, Uruguay</title>
+<meta name="description" content="Joyería Central: joyas de plata 925 y oro, relojes y reparaciones artesanales en Las Piedras, Uruguay. Más de una década cuidando lo que más valorás.">
+
+<meta property="og:title" content="Joyería Central — Joyas, Relojes y Reparaciones">
+<meta property="og:description" content="Joyas de plata 925 y oro, relojes y reparaciones con la dedicación artesanal de más de una década. Las Piedras, Uruguay.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.joyeriacentraluy.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">Joyería <span>Central</span></a>
+
+    <ul class="nav-links">
+      <li><a href="/catalogo.html">Catálogo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="btn btn-accent nav-cta">Consultanos</a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobilePanel">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="/catalogo.html">Catálogo</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="btn btn-accent">Consultanos</a>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/joyas-plata-oro/alianzas-de-oro-18k-1.png')"></div>
+    <div class="hero-slide" style="background-image:url('https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/joyas-plata-oro/anillo-nudo-de-bruja-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/relojes/reloj-de-hombre-seiko-con-cronografo-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/joyas-plata-oro/collar-de-plata-y-cuarzo-rubi-1.png')"></div>
+    <div class="hero-slide" style="background-image:url('https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/joyas-plata-oro/pulsera-de-plata-925-eslabon-gucci-con-infinitos-1.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <svg class="hero-pattern" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#E0BD73" stroke-width="1">
+      <line x1="-50" y1="0" x2="150" y2="450" />
+      <line x1="50" y1="0" x2="250" y2="450" />
+      <line x1="150" y1="0" x2="350" y2="450" />
+      <line x1="250" y1="0" x2="450" y2="450" />
+      <line x1="350" y1="0" x2="550" y2="450" />
+    </g>
+  </svg>
+
+  <div class="hero-container">
+    <p class="eyebrow hero-eyebrow">Las Piedras, Uruguay</p>
+    <h1 id="heroTitle" aria-label="Elegancia que perdura en el tiempo"></h1>
+    <p class="hero-subtitle">Joyas de plata 925 y oro, relojes y reparaciones con la dedicación artesanal de más de una década cuidando lo que más valorás.</p>
+    <div class="hero-buttons">
+      <a href="/catalogo.html" class="btn btn-accent">Explorar catálogo</a>
+      <a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="btn btn-whatsapp">
+        <svg class="btn-wa-icon" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.15.11.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <a href="#categorias" class="scroll-indicator" aria-label="Bajar a la siguiente sección">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M6 14l6 6 6-6"></path></svg>
+  </a>
+</header>
+
+<section class="benefits-strip" aria-label="Por qué elegirnos">
+  <div class="container benefits-grid">
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"></path></svg>
+      </div>
+      <div>
+        <h4>+10 años</h4>
+        <p>De trayectoria en Las Piedras</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 6.5c0 5-8.5 11-8.5 11s-8.5-6-8.5-11a4.5 4.5 0 0 1 8.5-2 4.5 4.5 0 0 1 8.5 2z"></path></svg>
+      </div>
+      <div>
+        <h4>Atención personalizada</h4>
+        <p>Te acompañamos en cada elección</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"></path><path d="m9 12 2 2 4-4"></path></svg>
+      </div>
+      <div>
+        <h4>Garantía</h4>
+        <p>En reparaciones y trabajos a medida</p>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 20l1-5.4A8.5 8.5 0 1 1 21 11.5z"></path></svg>
+      </div>
+      <div>
+        <h4>Respuesta directa</h4>
+        <p>Por WhatsApp, sin vueltas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+<section id="categorias" class="categories-section">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <p class="eyebrow" style="text-align:center;">Catálogo</p>
+      <h2>Explorá por categoría</h2>
+      <p>Cada pieza seleccionada con el cuidado y la calidad que nos define.</p>
+    </div>
+
+    <div id="categoriesGrid" class="categories-grid" aria-live="polite">
+      <p style="grid-column:1/-1; text-align:center; color:var(--text-secondary);">Cargando categorías...</p>
+    </div>
+  </div>
+</section>
+
+<section id="destacados" class="featured-section">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <p class="eyebrow" style="text-align:center;">Destacados</p>
+      <h2>Seleccionados para vos</h2>
+    </div>
+
+    <div class="carousel" id="featuredCarousel">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <p style="padding:40px; color:var(--text-secondary);">Cargando destacados...</p>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="carouselPrev" aria-label="Producto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="carouselNext" aria-label="Producto siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brand-banner">
+  <div class="container">
+    <div class="reveal-left">
+      <p class="eyebrow" style="color:var(--accent-soft);">Nuestra trayectoria</p>
+      <h2>Más de una década creando momentos especiales</h2>
+      <p>Cada pieza cuenta una historia. Cada reparación, un compromiso.</p>
+    </div>
+    <div class="brand-banner-image reveal-right">
+      <div class="parallax-layer" id="parallaxLayer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2 8 8h8l-4-6z"></path><path d="M8 8 3 10l9 12 9-12-5-2"></path><path d="M8 8h8"></path></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="servicios">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <p class="eyebrow" style="text-align:center;">Servicios</p>
+      <h2>Lo que hacemos por vos</h2>
+      <p>Reparaciones y trabajos artesanales con la confianza de siempre.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-item reveal-up stagger-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="7"></circle>
+            <path d="M12 9v3l2 1.5"></path>
+            <path d="M9 3h6M9 21h6"></path>
+          </svg>
+        </div>
+        <h3>Reparación de Relojes</h3>
+        <p>Automáticos, a pila, de múltiples marcas. Algunas reparaciones se hacen en el acto.</p>
+      </div>
+
+      <div class="service-item reveal-up stagger-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5c-2.5-2.5-3-6-1-9 .5 2 1.5 2.5 2 2 .5-2-1-3.5 0-5.5 2 1 4.5 3 4 6.5 2-1 2.5.5 2 2 2 0 3 2 2 4-1.5 3.5-6 5-9 0z"></path>
+          </svg>
+        </div>
+        <h3>Soldaduras</h3>
+        <p>Soldaduras de plata y de oro con terminación profesional.</p>
+      </div>
+
+      <div class="service-item reveal-up stagger-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="8" width="15" height="8" rx="1.5"></rect>
+            <path d="M18 11h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5H18"></path>
+            <path d="M7 8V6.5A1.5 1.5 0 0 1 8.5 5h1A1.5 1.5 0 0 1 11 6.5V8"></path>
+          </svg>
+        </div>
+        <h3>Colocación de Pilas</h3>
+        <p>Cambio de pilas rápido para que tu reloj no se detenga.</p>
+      </div>
+
+      <div class="service-item reveal-up stagger-4">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21 15 9"></path>
+            <circle cx="17.5" cy="6.5" r="2.5"></circle>
+            <circle cx="6.5" cy="17.5" r="2.5"></circle>
+            <path d="M14 4 20 10"></path>
+          </svg>
+        </div>
+        <h3>Confección a Medida</h3>
+        <p>Joyas personalizadas, mates y bombillas hechos a tu gusto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image placeholder reveal-scale">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 8 8h8l-4-6z"></path>
+          <path d="M8 8 3 10l9 12 9-12-5-2"></path>
+          <path d="M8 8h8"></path>
+        </svg>
+      </div>
+      <div class="about-text reveal-right">
+        <p class="eyebrow">Nosotros</p>
+        <h2 style="font-size:clamp(1.6rem, 3.2vw, 2.3rem); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:20px;">Nuestra historia</h2>
+        <p>En Joyería Central nos dedicamos a ofrecer joyas elegantes y modernas que realzan tu belleza y estilo. Ubicados en Avenida Artigas 572, Las Piedras, somos un referente local en joyería, relojería y reparaciones.</p>
+        <p>Nuestra misión es brindarte una experiencia de compra excepcional, donde la calidad y la atención al detalle son lo primero. Cada pieza que ofrecemos es seleccionada con cuidado, y cada reparación es tratada con dedicación artesanal.</p>
+
+        <div class="stats-row">
+          <div class="stat">
+            <h4 data-count-to="10" data-count-suffix="+">0</h4>
+            <p>Años de experiencia</p>
+          </div>
+          <div class="stat">
+            <h4 data-count-to="1000" data-count-suffix="+">0</h4>
+            <p>Clientes satisfechos</p>
+          </div>
+          <div class="stat">
+            <h4 data-count-to="100" data-count-suffix="%">0</h4>
+            <p>Atención personalizada</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="editorial-band">
+  <img src="https://orvwtagydeccfuxudlor.supabase.co/storage/v1/object/public/product-images/joyas-plata-oro/alianzas-de-oro-18k-1.png" alt="Alianzas de oro en su estuche, junto a rosas" loading="lazy">
+  <div class="editorial-overlay"></div>
+  <div class="container">
+    <div class="editorial-content reveal-up">
+      <p class="eyebrow">Hecho para durar</p>
+      <h2>Piezas que se convierten en historia</h2>
+      <p>Cada anillo, cada cadena, cada reparación pasa por nuestras manos con el mismo cuidado de siempre. Así elegimos trabajar desde hace más de una década.</p>
+      <a href="/catalogo.html" class="btn btn-accent">Descubrí la colección</a>
+    </div>
+  </div>
+</section>
+
+<section class="promo">
+  <div class="container reveal-up">
+    <p class="eyebrow" style="text-align:center;">Oferta Especial</p>
+    <h2>Descuento exclusivo en piezas seleccionadas</h2>
+    <p class="promo-text">Aprovechá nuestra promoción en joyas únicas. Encontrá el complemento perfecto para tu estilo a precios increíbles.</p>
+    <a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20consultar%20por%20la%20oferta%20especial" class="btn btn-accent">Consultar oferta</a>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <p class="eyebrow" style="text-align:center;">Contacto</p>
+      <h2>Visitanos o escribinos</h2>
+      <p>Estamos para ayudarte. Consultá sin compromiso por cualquiera de nuestros canales.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"></path>
+              <circle cx="12" cy="9" r="2.5"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Avenida Artigas 572 esq. Leandro Gómez, Las Piedras, Canelones, Uruguay</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2C9.5 21 3 14.5 3 6a2 2 0 0 1 1-2z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Teléfonos</h4>
+            <a href="tel:+59895135724">095 135 724</a>
+            <a href="tel:+59823639360">2363 9360</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m3 7 9 6 9-6"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:addacippo@gmail.com">addacippo@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 7v5l3.5 2"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Horarios</h4>
+            <p>Lunes a Viernes: 10:00 a 18:00</p>
+            <p>Sábados: 10:00 a 14:00</p>
+          </div>
+        </div>
+
+        <a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="btn btn-whatsapp" style="margin-top:12px;">
+          <svg class="btn-wa-icon" viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.15.11.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-map contact-map-dark reveal-right">
+        <iframe
+          src="https://www.google.com/maps?q=-34.7275,-56.2196&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Joyería Central en Las Piedras, Uruguay">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-container">
+    <p>© 2025 Joyería Central. Todos los derechos reservados.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/central_de_reparacioness/" aria-label="Instagram de Joyería Central" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.2" cy="6.8" r="1"></circle>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/" aria-label="Facebook de Joyería Central" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h2.5l.5-4H13V7a1 1 0 0 1 1-1h2V3z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/59895135724?text=Hola%2C%20quiero%20hacer%20una%20consulta" class="whatsapp-float" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.17-4.94-4.36-.15-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.14.07.15.11.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script src="/js/common.js"></script>
+<script src="/js/landing.js"></script>
+
+</body>
+</html>

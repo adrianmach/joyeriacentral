@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración — Joyería Central</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<!-- Login -->
+<section id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <p class="logo">Joyería <span>Central</span></p>
+    <p class="login-subtitle">Panel de Administración</p>
+    <form id="loginForm">
+      <div class="field" style="text-align:left;">
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+      </div>
+      <p class="login-error" id="loginError"></p>
+      <button type="submit" class="btn btn-accent" id="loginSubmitBtn">Entrar</button>
+    </form>
+  </div>
+</section>
+
+<!-- Dashboard -->
+<div id="dashboardScreen" class="hidden">
+  <header class="admin-header">
+    <h1>Panel de Administración — Joyería Central</h1>
+    <div class="admin-header-actions">
+      <a href="/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Ver sitio →</a>
+      <button id="logoutBtn" class="btn btn-outline btn-sm">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div class="admin-container">
+
+    <div class="view-tabs">
+      <button class="view-tab active" data-view="products" id="tabProducts">Productos</button>
+      <button class="view-tab" data-view="categories" id="tabCategories">Categorías</button>
+    </div>
+
+    <!-- Products view -->
+    <div id="viewProducts">
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card"><div class="stat-value" id="statTotal">0</div><div class="stat-label">Total de productos</div></div>
+        <div class="stat-card"><div class="stat-value" id="statOffer">0</div><div class="stat-label">Productos en oferta</div></div>
+        <div class="stat-card"><div class="stat-value" id="statOutOfStock">0</div><div class="stat-label">Sin stock</div></div>
+        <div class="stat-card"><div class="stat-value" id="statCategories">0</div><div class="stat-label">Categorías</div></div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-filters">
+          <input type="search" id="searchInput" placeholder="Buscar por nombre...">
+          <select id="categoryFilterSelect">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+        <button class="btn btn-accent" id="addProductBtn">+ Agregar producto</button>
+      </div>
+
+      <div class="bulk-bar hidden" id="bulkBar">
+        <span id="bulkCount">0 seleccionados</span>
+        <div class="bulk-actions">
+          <select id="bulkCategorySelect">
+            <option value="">Cambiar categoría...</option>
+          </select>
+          <button class="btn btn-outline btn-sm" id="bulkOfferBtn">Marcar oferta</button>
+          <button class="btn btn-outline btn-sm" id="bulkOutOfStockBtn">Marcar sin stock</button>
+          <button class="btn btn-danger btn-sm" id="bulkDeleteBtn">Eliminar</button>
+        </div>
+      </div>
+
+      <div class="product-table-wrap">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th style="width:32px;"><input type="checkbox" id="selectAllCheckbox" aria-label="Seleccionar todos"></th>
+              <th>Producto</th>
+              <th>Categoría</th>
+              <th>Precio</th>
+              <th>Tags</th>
+              <th>Stock</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody">
+            <tr class="empty-row"><td colspan="7">Cargando productos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Categories view -->
+    <div id="viewCategories" class="hidden">
+      <div class="category-list" id="categoryList"></div>
+      <form class="add-category-form" id="addCategoryForm">
+        <input type="text" id="newCategoryName" placeholder="Nombre de la nueva categoría" required>
+        <button type="submit" class="btn btn-accent">Agregar</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- Product modal -->
+<div id="productModalOverlay" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="productModalTitle">Agregar producto</h2>
+      <button class="modal-close" id="productModalClose" aria-label="Cerrar">&times;</button>
+    </div>
+    <form id="productForm">
+      <div class="field">
+        <label for="prodName">Nombre *</label>
+        <input type="text" id="prodName" required>
+      </div>
+
+      <div class="field">
+        <label for="prodDescription">Descripción</label>
+        <textarea id="prodDescription"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="prodPrice">Precio (UYU) *</label>
+          <input type="number" id="prodPrice" min="0" step="0.01" required>
+        </div>
+        <div class="field">
+          <label for="prodComparePrice">Precio anterior</label>
+          <input type="number" id="prodComparePrice" min="0" step="0.01">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="prodCategory">Categoría *</label>
+        <select id="prodCategory" required></select>
+      </div>
+
+      <div class="field">
+        <label>Tags</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="tagNuevo" value="nuevo"> Nuevo</label>
+          <label><input type="checkbox" id="tagOferta" value="oferta"> Oferta</label>
+          <label><input type="checkbox" id="tagDestacado" value="destacado"> Destacado</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="toggle-row">
+          <label class="switch">
+            <input type="checkbox" id="prodInStock" checked>
+            <span class="track"></span>
+          </label>
+          <label for="prodInStock">En stock</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Imágenes (máximo 5)</label>
+        <div class="image-uploader" id="imageUploader"></div>
+        <input type="file" id="imageFileInput" accept="image/jpeg,image/png,image/webp" multiple class="hidden">
+        <p class="field-hint">JPG, PNG o WEBP, hasta 5MB cada una. La primera es la imagen principal.</p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="productCancelBtn">Cancelar</button>
+        <button type="submit" class="btn btn-accent" id="productSaveBtn">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

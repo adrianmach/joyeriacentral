@@ -1,0 +1,19 @@
+{
+  "name": "joyeria-central",
+  "version": "1.0.0",
+  "description": "Sitio web, panel de administración y migración de datos para Joyería Central",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "import-wix": "node scripts/import-wix.js",
+    "migrate-supabase": "node scripts/migrate-to-supabase.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.111.0",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "jimp": "^1.6.1",
+    "multer": "^2.0.0"
+  }
+}
