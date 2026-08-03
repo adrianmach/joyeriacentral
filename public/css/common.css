@@ -102,16 +102,19 @@ section { padding: 80px 0; }
   opacity: 0.7;
 }
 
-/* Reusable ornamental filigree divider — one SVG, reused under every section header */
-.section-header::after {
+/* Reusable ornamental filigree divider — one SVG, reused under every section header
+   and standalone between alternating sections via .ornament-divider */
+.section-header::after,
+.ornament-divider {
   content: '';
   display: block;
   width: 168px;
   height: 18px;
-  margin: 24px auto 0;
   opacity: 0.75;
   background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%2020'%3E%3Cline%20x1='0'%20y1='10'%20x2='82'%20y2='10'%20stroke='%23C9973E'%20stroke-width='1'/%3E%3Cline%20x1='118'%20y1='10'%20x2='200'%20y2='10'%20stroke='%23C9973E'%20stroke-width='1'/%3E%3Crect%20x='94'%20y='4'%20width='12'%20height='12'%20transform='rotate(45%20100%2010)'%20fill='none'%20stroke='%23C9973E'%20stroke-width='1.2'/%3E%3Ccircle%20cx='100'%20cy='10'%20r='1.6'%20fill='%23C9973E'/%3E%3C/svg%3E") no-repeat center / contain;
 }
+.section-header::after { margin: 24px auto 0; }
+.ornament-divider { margin: 0 auto; }
 
 /* Page hero (catálogo, categoría, producto) */
 .page-hero {
