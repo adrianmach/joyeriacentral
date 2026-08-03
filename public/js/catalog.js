@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const { formatPrice, waLink, escapeHtml, whatsappIconSvg, placeholderSvg, apiFetch } = window.JC;
+  const { formatPrice, escapeHtml, placeholderSvg, apiFetch } = window.JC;
   const PAGE_SIZE = 24;
 
   const isCategoryPage = document.body.dataset.page === 'categoria';
@@ -78,14 +78,12 @@
       : `<span class="price-current">${formatPrice(product.price)}</span>`;
 
     const oosHtml = !product.inStock ? '<span class="price-oos">Sin stock</span>' : '';
-    const link = waLink(`Hola, quiero consultar por ${product.name}`);
     const delay = Math.min(index, 12) * 0.05;
 
     return `
       <article class="product-card" style="animation-delay:${delay}s">
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-media">
           ${badge}${imageHtml}
-          <button type="button" class="product-card-wa" aria-label="Consultar por WhatsApp" data-wa="${escapeHtml(link)}">${whatsappIconSvg()}</button>
         </a>
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-body">
           <h3>${escapeHtml(product.name)}</h3>
@@ -173,13 +171,6 @@
     const start = (state.page - 1) * PAGE_SIZE;
     const pageItems = list.slice(start, start + PAGE_SIZE);
     grid.innerHTML = pageItems.map(productCardHtml).join('');
-
-    grid.querySelectorAll('.product-card-wa').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.open(btn.dataset.wa, '_blank', 'noopener,noreferrer');
-      });
-    });
   }
 
   function renderPagination(total) {

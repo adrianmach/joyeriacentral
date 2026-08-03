@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const { formatPrice, waLink, escapeHtml, whatsappIconSvg, apiFetch, prefersReducedMotion, observeReveals } = window.JC;
+  const { formatPrice, escapeHtml, apiFetch, prefersReducedMotion, observeReveals } = window.JC;
 
   // ---------- Hero word reveal ----------
 
@@ -103,13 +103,10 @@
       ? `<span class="price-old">${formatPrice(product.comparePrice)}</span><span class="price-current">${formatPrice(product.price)}</span>`
       : `<span class="price-current">${formatPrice(product.price)}</span>`;
 
-    const link = waLink(`Hola, quiero consultar por ${product.name}`);
-
     return `
       <article class="product-card">
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-media">
           ${badge}${imageHtml}
-          <button type="button" class="product-card-wa" aria-label="Consultar por WhatsApp" data-wa="${escapeHtml(link)}">${whatsappIconSvg()}</button>
         </a>
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-body">
           <h3>${escapeHtml(product.name)}</h3>
@@ -134,12 +131,6 @@
     }
 
     track.innerHTML = products.map(featuredCardHtml).join('');
-    track.querySelectorAll('.product-card-wa').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.open(btn.dataset.wa, '_blank', 'noopener,noreferrer');
-      });
-    });
 
     function getPerView() {
       if (window.innerWidth <= 560) return 1;

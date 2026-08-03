@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const { formatPrice, waLink, escapeHtml, whatsappIconSvg, placeholderSvg, apiFetch, observeReveals } = window.JC;
+  const { formatPrice, waLink, escapeHtml, placeholderSvg, apiFetch, observeReveals } = window.JC;
 
   const productId = new URLSearchParams(location.search).get('id');
   let currentImages = [];
@@ -114,13 +114,11 @@
     const priceHtml = hasDiscount
       ? `<span class="price-old">${formatPrice(product.comparePrice)}</span><span class="price-current">${formatPrice(product.price)}</span>`
       : `<span class="price-current">${formatPrice(product.price)}</span>`;
-    const link = waLink(`Hola, quiero consultar por ${product.name}`);
 
     return `
       <article class="product-card">
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-media">
           ${imageHtml}
-          <button type="button" class="product-card-wa" aria-label="Consultar por WhatsApp" data-wa="${escapeHtml(link)}">${whatsappIconSvg()}</button>
         </a>
         <a href="/producto.html?id=${encodeURIComponent(product.id)}" class="product-card-body">
           <h3>${escapeHtml(product.name)}</h3>
@@ -137,12 +135,6 @@
       const section = document.getElementById('relatedSection');
       if (!related.length) { section.style.display = 'none'; return; }
       wrap.innerHTML = related.map(relatedCardHtml).join('');
-      wrap.querySelectorAll('.product-card-wa').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.open(btn.dataset.wa, '_blank', 'noopener,noreferrer');
-        });
-      });
     } catch (e) {
       document.getElementById('relatedSection').style.display = 'none';
     }
