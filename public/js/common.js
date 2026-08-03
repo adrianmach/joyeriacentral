@@ -128,10 +128,38 @@ window.JC = (function () {
     });
   }
 
+  // ---------- Soft page transitions ----------
+
+  function initPageTransitions() {
+    // Fade the freshly-loaded page in.
+    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+
+    if (prefersReducedMotion) return;
+
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const link = e.target.closest('a');
+      if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+
+      const href = link.getAttribute('href') || '';
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+
+      let url;
+      try { url = new URL(link.href, window.location.href); } catch (err) { return; }
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = link.href; }, 300);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initRevealObserver();
     observeReveals(document);
+    initPageTransitions();
   });
 
   return {

@@ -31,6 +31,8 @@ body {
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 h1, h2, h3, h4 {
@@ -100,10 +102,21 @@ section { padding: 80px 0; }
   opacity: 0.7;
 }
 
+/* Reusable ornamental filigree divider — one SVG, reused under every section header */
+.section-header::after {
+  content: '';
+  display: block;
+  width: 168px;
+  height: 18px;
+  margin: 24px auto 0;
+  opacity: 0.75;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%2020'%3E%3Cline%20x1='0'%20y1='10'%20x2='82'%20y2='10'%20stroke='%23C9973E'%20stroke-width='1'/%3E%3Cline%20x1='118'%20y1='10'%20x2='200'%20y2='10'%20stroke='%23C9973E'%20stroke-width='1'/%3E%3Crect%20x='94'%20y='4'%20width='12'%20height='12'%20transform='rotate(45%20100%2010)'%20fill='none'%20stroke='%23C9973E'%20stroke-width='1.2'/%3E%3Ccircle%20cx='100'%20cy='10'%20r='1.6'%20fill='%23C9973E'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 /* Page hero (catálogo, categoría, producto) */
 .page-hero {
   padding: 132px 0 40px;
-  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
+  background: radial-gradient(circle at 50% 30%, rgba(224,189,115,0.03), transparent 60%), linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
 }
 .page-hero h1 {
   font-size: clamp(1.9rem, 4vw, 2.7rem);
@@ -165,7 +178,26 @@ section { padding: 80px 0; }
   font-size: 0.95rem;
   border: 1px solid transparent;
   background: none;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.32), transparent);
+  transform: skewX(-20deg) translateX(0);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn::before { transition: transform 0.6s ease; }
+  .btn:hover::before { transform: skewX(-20deg) translateX(260%); }
 }
 
 .btn-accent {
@@ -255,13 +287,33 @@ section { padding: 80px 0; }
 }
 
 .nav-links a {
+  position: relative;
   font-size: 0.95rem;
   font-weight: 500;
   color: #E7E0D2;
   transition: color 0.2s ease;
+  padding-bottom: 3px;
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--accent-soft); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.nav-links a.active::after { transform: scaleX(1); }
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover::after { transform: scaleX(1); }
+}
 
 .nav-cta { padding: 11px 22px; font-size: 0.88rem; white-space: nowrap; }
 
@@ -317,6 +369,21 @@ section { padding: 80px 0; }
 .product-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-soft);
+  z-index: 3;
+}
+@media (hover: hover) and (pointer: fine) {
+  .product-card::after { transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+  .product-card:hover::after { width: 100%; }
 }
 
 .product-card-media {
@@ -457,47 +524,53 @@ footer {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 60px;
-  height: 60px;
-  background: var(--whatsapp);
+  width: 56px;
+  height: 56px;
+  background: transparent;
+  border: 1.5px solid var(--whatsapp);
+  color: var(--whatsapp);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
   z-index: 999;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 .whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.55);
+  background: var(--whatsapp);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
-.whatsapp-float svg { width: 30px; height: 30px; }
+.whatsapp-float svg { width: 26px; height: 26px; }
 
-/* Scroll reveal animations */
+/* Scroll reveal animations — clip-path wipes */
 .reveal-up, .reveal-left, .reveal-right, .reveal-scale {
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1), clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }
-.reveal-up { transform: translateY(30px); }
-.reveal-left { transform: translateX(-30px); }
-.reveal-right { transform: translateX(30px); }
-.reveal-scale { transform: scale(0.95); }
+
+/* Titles: revealed top-to-bottom */
+.reveal-up { clip-path: inset(0 0 100% 0); }
+
+/* Cards & images: revealed left-to-right */
+.reveal-left, .reveal-right, .reveal-scale { clip-path: inset(0 0 0 100%); }
 
 .reveal-up.revealed,
 .reveal-left.revealed,
 .reveal-right.revealed,
 .reveal-scale.revealed {
   opacity: 1;
-  transform: none;
+  clip-path: inset(0 0 0 0);
 }
 
-.stagger-1 { transition-delay: 0.1s; }
-.stagger-2 { transition-delay: 0.2s; }
-.stagger-3 { transition-delay: 0.3s; }
-.stagger-4 { transition-delay: 0.4s; }
-.stagger-5 { transition-delay: 0.5s; }
-.stagger-6 { transition-delay: 0.6s; }
+.stagger-1 { transition-delay: 0.15s; }
+.stagger-2 { transition-delay: 0.3s; }
+.stagger-3 { transition-delay: 0.45s; }
+.stagger-4 { transition-delay: 0.6s; }
+.stagger-5 { transition-delay: 0.75s; }
+.stagger-6 { transition-delay: 0.9s; }
 
 /* Legacy alias kept for pages that still use .fade-in */
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -513,12 +586,20 @@ footer {
   .reveal-up, .reveal-left, .reveal-right, .reveal-scale, .fade-in {
     opacity: 1 !important;
     transform: none !important;
+    clip-path: none !important;
   }
+  body { opacity: 1 !important; }
 }
 
 /* Responsive: nav + footer */
 @media (max-width: 768px) {
   section { padding: 60px 0; }
+
+  /* Simpler, cheaper scroll reveal on mobile: plain fade, no clip-path */
+  .reveal-up, .reveal-left, .reveal-right, .reveal-scale {
+    clip-path: none !important;
+    transition: opacity 0.6s ease !important;
+  }
 
   .nav-links { display: none; }
   .nav-cta { display: none; }

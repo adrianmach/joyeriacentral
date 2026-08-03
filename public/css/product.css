@@ -132,7 +132,7 @@
 .lightbox-close:hover { background: rgba(255,255,255,0.22); }
 
 /* Related products */
-.related-section { background: var(--accent-bg); }
+.related-section { background: radial-gradient(circle at 50% 40%, rgba(224,189,115,0.03), transparent 60%), var(--accent-bg); }
 
 .breadcrumb-wrap { padding-top: 0; }
 

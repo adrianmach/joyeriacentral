@@ -165,11 +165,23 @@
       }
     }
 
+    function updateFocus() {
+      const cards = Array.from(track.children).filter((el) => el.classList.contains('product-card'));
+      const mid = (perView - 1) / 2;
+      cards.forEach((card, i) => {
+        const dist = Math.abs((i - index) - mid);
+        const isFocus = dist < 1;
+        card.classList.toggle('carousel-card-focus', isFocus);
+        card.classList.toggle('carousel-card-side', !isFocus);
+      });
+    }
+
     function update() {
       const cardWidth = track.firstElementChild ? track.firstElementChild.getBoundingClientRect().width : 0;
       const gap = 24;
       track.style.transform = `translateX(-${index * (cardWidth + gap)}px)`;
       dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+      updateFocus();
     }
 
     function goTo(i) {
@@ -239,24 +251,47 @@
     }
   }
 
-  // ---------- Parallax banner ----------
+  // ---------- Parallax (secciones alternadas: trayectoria + nosotros) ----------
 
   function initParallax() {
     if (prefersReducedMotion) return;
-    const layer = document.getElementById('parallaxLayer');
-    const banner = document.querySelector('.brand-banner');
-    if (!layer || !banner) return;
+
+    const pairs = [
+      { layer: document.getElementById('parallaxLayerBanner'), section: document.querySelector('.brand-banner') },
+      { layer: document.getElementById('parallaxLayerAbout'), section: document.querySelector('.about-image') },
+    ].filter((p) => p.layer && p.section);
+    if (!pairs.length) return;
+
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const vh = window.innerHeight;
+
+      if (mobileQuery.matches) {
+        pairs.forEach(({ layer }) => { layer.style.transform = ''; });
+        return;
+      }
+
+      pairs.forEach(({ layer, section }) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > vh) return;
+        const progress = (vh - rect.top) / (vh + rect.height);
+        const offset = (progress - 0.5) * 60; // capped at ±30px
+        layer.style.transform = `translateY(${offset}px)`;
+      });
+    }
 
     function onScroll() {
-      const rect = banner.getBoundingClientRect();
-      const vh = window.innerHeight;
-      if (rect.bottom < 0 || rect.top > vh) return;
-      const progress = (vh - rect.top) / (vh + rect.height);
-      const offset = (progress - 0.5) * 50;
-      layer.style.transform = `translateY(${offset}px)`;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
     }
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
   }
 
   // ---------- Counter animation ----------
@@ -287,7 +322,11 @@
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(target * eased) + suffix;
-        if (progress < 1) requestAnimationFrame(tick);
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.classList.add('count-flash');
+        }
       }
       requestAnimationFrame(tick);
     }

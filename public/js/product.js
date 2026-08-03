@@ -23,7 +23,7 @@
 
     if (currentImages.length > 1) {
       thumbsWrap.innerHTML = currentImages.map((img, i) => (
-        `<button type="button" class="gallery-thumb reveal-up stagger-${Math.min(i + 1, 6)}" data-i="${i}"><img src="${escapeHtml(img)}" alt=""></button>`
+        `<button type="button" class="gallery-thumb reveal-scale stagger-${Math.min(i + 1, 6)}" data-i="${i}"><img src="${escapeHtml(img)}" alt=""></button>`
       )).join('');
       thumbsWrap.querySelectorAll('.gallery-thumb').forEach((btn) => {
         btn.addEventListener('click', () => setMainImage(Number(btn.dataset.i)));

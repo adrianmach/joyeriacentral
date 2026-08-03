@@ -7,7 +7,7 @@
   justify-content: center;
   text-align: center;
   padding: 140px 0 100px;
-  background: linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
+  background: radial-gradient(circle at 50% 30%, rgba(224,189,115,0.03), transparent 60%), linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
   overflow: hidden;
 }
 
@@ -22,9 +22,10 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.6s ease;
+  transform: scale(1.1);
+  transition: opacity 1.6s ease, transform 6s ease-out;
 }
-.hero-slide.active { opacity: 1; }
+.hero-slide.active { opacity: 1; transform: scale(1); }
 
 .hero-overlay {
   position: absolute;
@@ -67,8 +68,12 @@
 .hero h1 .word {
   display: inline-block;
   opacity: 0;
-  transform: translateY(28px);
-  animation: heroFadeUp 0.65s ease forwards;
+  clip-path: inset(100% 0 0 0);
+  animation: heroWordReveal 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes heroWordReveal {
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 
 .hero-subtitle {
@@ -132,12 +137,13 @@
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    clip-path: none !important;
   }
   .scroll-indicator svg { animation: none !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-slide { transition: none !important; }
+  .hero-slide { transition: none !important; transform: none !important; }
 }
 
 /* ===== Beneficios ===== */
@@ -235,7 +241,7 @@
 }
 
 /* ===== Categorías destacadas ===== */
-.categories-section { background: var(--bg); }
+.categories-section { background: radial-gradient(circle at 50% 40%, rgba(224,189,115,0.03), transparent 60%), var(--bg); }
 
 .categories-grid {
   display: grid;
@@ -295,7 +301,7 @@
 }
 
 /* ===== Destacados (carrusel) ===== */
-.featured-section { background: var(--bg); }
+.featured-section { background: radial-gradient(circle at 50% 40%, rgba(224,189,115,0.03), transparent 60%), var(--bg); }
 
 .carousel {
   position: relative;
@@ -311,8 +317,12 @@
 .carousel-track .product-card {
   flex: 0 0 calc((100% - 3 * 24px) / 4);
   margin-right: 24px;
+  transition: box-shadow 0.3s ease, transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
 }
 .carousel-track .product-card:last-child { margin-right: 0; }
+
+.carousel-track .product-card.carousel-card-focus { transform: scale(1.05); opacity: 1; z-index: 2; }
+.carousel-track .product-card.carousel-card-side { opacity: 0.7; }
 
 .carousel-controls {
   display: flex;
@@ -369,7 +379,7 @@
 
 /* ===== Banner de marca ===== */
 .brand-banner {
-  background: var(--bg-dark);
+  background: radial-gradient(circle at 50% 40%, rgba(224,189,115,0.03), transparent 60%), var(--bg-dark);
   color: #fff;
   overflow: hidden;
 }
@@ -398,7 +408,11 @@
   background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
   border: 1px solid rgba(255,255,255,0.08);
 }
-.brand-banner-image .parallax-layer {
+@media (hover: hover) and (pointer: fine) {
+  .brand-banner-image { transition: transform 0.6s ease; }
+  .brand-banner-image:hover { transform: translateY(-5px); }
+}
+.parallax-layer {
   position: absolute;
   inset: -40px 0;
   display: flex;
@@ -415,7 +429,7 @@
 }
 
 /* ===== Servicios ===== */
-.servicios { background: var(--accent-bg); }
+.servicios { background: radial-gradient(circle at 50% 35%, rgba(224,189,115,0.03), transparent 60%), var(--accent-bg); }
 
 .services-grid {
   display: grid;
@@ -477,6 +491,8 @@
 }
 
 /* ===== Nosotros ===== */
+#nosotros { background: radial-gradient(circle at 50% 35%, rgba(224,189,115,0.03), transparent 60%); }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -487,10 +503,14 @@
 .about-image {
   height: 420px;
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 1s ease;
+  transition: clip-path 1s ease, transform 0.6s ease;
 }
 .about-image.revealed { clip-path: inset(0 0 0 0); }
 .about-image svg { width: 96px; height: 96px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .about-image:hover { transform: translateY(-5px); }
+}
 
 .about-text p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; }
 
@@ -506,8 +526,15 @@
 .stat h4 { font-size: 2rem; color: var(--accent); margin-bottom: 4px; }
 .stat p { color: var(--text-secondary); font-size: 0.88rem; }
 
+.stat h4.count-flash { animation: statFlash 0.5s ease; }
+@keyframes statFlash {
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: 0 0 20px var(--accent); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-image { clip-path: inset(0 0 0 0) !important; }
+  .stat h4.count-flash { animation: none !important; }
 }
 
 /* ===== Promo ===== */
@@ -540,6 +567,8 @@
 }
 
 /* ===== Contacto ===== */
+#contacto { background: radial-gradient(circle at 50% 30%, rgba(224,189,115,0.03), transparent 60%); }
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
