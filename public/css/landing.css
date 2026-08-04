@@ -1,4 +1,4 @@
-/* ===== Hero ===== */
+﻿/* ===== Hero ===== */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -7,7 +7,7 @@
   justify-content: center;
   text-align: center;
   padding: 140px 0 100px;
-  background: radial-gradient(circle at 50% 30%, rgba(224,189,115,0.03), transparent 60%), linear-gradient(180deg, var(--accent-bg) 0%, var(--bg) 100%);
+  background: var(--bg-dark);
   overflow: hidden;
 }
 
@@ -31,7 +31,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(10,8,6,0.6) 0%, rgba(10,8,6,0.72) 55%, rgba(10,8,6,0.94) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.62) 100%);
 }
 
 .hero-pattern {
@@ -60,9 +60,10 @@
 .hero h1 {
   font-size: clamp(2.5rem, 6vw, 4.2rem);
   margin-bottom: 24px;
+  color: #fff;
 }
 .hero h1 em {
-  color: var(--accent);
+  color: var(--gold-light);
   font-style: italic;
 }
 .hero h1 .word {
@@ -77,7 +78,7 @@
 }
 
 .hero-subtitle {
-  color: var(--text-secondary);
+  color: rgba(255,255,255,0.86);
   font-size: 1.15rem;
   max-width: 560px;
   margin: 0 auto 40px;
@@ -111,7 +112,7 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: var(--text-secondary);
+  color: rgba(255,255,255,0.8);
   opacity: 0;
   animation: heroFadeUp 0.7s ease forwards;
   animation-delay: 1.3s;
@@ -148,7 +149,7 @@
 
 /* ===== Beneficios ===== */
 .benefits-strip {
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border);
   padding: 32px 0;
 }
@@ -167,12 +168,12 @@
   height: 44px;
   min-width: 44px;
   border-radius: 50%;
-  background: var(--accent-bg);
+  background: var(--gold-bg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.benefit-icon svg { width: 20px; height: 20px; stroke: var(--accent); }
+.benefit-icon svg { width: 20px; height: 20px; stroke: var(--gold); }
 .benefit-item h4 {
   font-family: 'Lato', sans-serif;
   font-weight: 600;
@@ -218,7 +219,7 @@
   color: #fff;
   padding: 60px 0;
 }
-.editorial-content .eyebrow { color: var(--accent-soft); }
+.editorial-content .eyebrow { color: var(--gold-light); }
 .editorial-content h2 {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   text-transform: uppercase;
@@ -256,7 +257,7 @@
   display: block;
   border-radius: 14px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--accent-bg), #150F09);
+  background: linear-gradient(135deg, var(--bg-surface), var(--bg-elevated));
   color: #fff;
 }
 .category-card img {
@@ -336,14 +337,14 @@
   height: 44px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   color: var(--text);
 }
-.carousel-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
 .carousel-btn svg { width: 18px; height: 18px; }
 
 .carousel-dots { display: flex; gap: 4px; }
@@ -368,7 +369,7 @@
   transform: translate(-50%, -50%);
   transition: background 0.2s ease, transform 0.2s ease;
 }
-.carousel-dot.active::before { background: var(--accent); transform: translate(-50%, -50%) scale(1.3); }
+.carousel-dot.active::before { background: var(--gold); transform: translate(-50%, -50%) scale(1.3); }
 
 @media (max-width: 900px) {
   .carousel-track .product-card { flex: 0 0 calc((100% - 24px) / 2); }
@@ -379,8 +380,8 @@
 
 /* ===== Banner de marca ===== */
 .brand-banner {
-  background: radial-gradient(circle at 50% 40%, rgba(224,189,115,0.03), transparent 60%), var(--bg-dark);
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   overflow: hidden;
 }
 .brand-banner .container {
@@ -396,7 +397,7 @@
   margin-bottom: 20px;
 }
 .brand-banner p {
-  color: #b8b8b8;
+  color: var(--text-secondary);
   font-size: 1.05rem;
   max-width: 440px;
 }
@@ -405,8 +406,8 @@
   border-radius: 14px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, var(--bg-surface), var(--bg-elevated));
+  border: 1px solid var(--border);
 }
 @media (hover: hover) and (pointer: fine) {
   .brand-banner-image { transition: transform 0.6s ease; }
@@ -418,7 +419,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent-soft);
+  color: var(--gold-light);
   will-change: transform;
 }
 .brand-banner-image .parallax-layer svg { width: 110px; height: 110px; opacity: 0.6; }
@@ -430,7 +431,7 @@
 }
 
 /* ===== Servicios ===== */
-.servicios { background: radial-gradient(circle at 50% 35%, rgba(224,189,115,0.03), transparent 60%), var(--accent-bg); }
+.servicios { background: var(--bg-surface); }
 
 .services-grid {
   display: grid;
@@ -439,7 +440,7 @@
 }
 
 .service-item {
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 32px 24px;
@@ -455,18 +456,18 @@
   width: 52px;
   height: 52px;
   border-radius: 10px;
-  background: var(--accent-bg);
+  background: var(--gold-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 }
-.service-item:hover .service-icon { background: var(--accent); }
+.service-item:hover .service-icon { background: var(--gold); }
 .service-item:hover .service-icon svg { stroke: #fff; }
 .service-icon svg {
   width: 26px;
   height: 26px;
-  stroke: var(--accent);
+  stroke: var(--gold);
   transition: stroke 0.3s ease;
 }
 .service-icon svg path,
@@ -518,13 +519,13 @@
   justify-content: center;
   padding: 72px 64px;
 }
-.alt-section-text .eyebrow { color: var(--accent-soft); }
+.alt-section-text .eyebrow { color: var(--gold); }
 .alt-section-text h2 {
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 18px;
-  color: var(--accent-soft);
+  color: var(--text);
 }
 .alt-section-text p {
   color: var(--text-secondary);
@@ -546,7 +547,7 @@
 }
 
 /* ===== Nosotros ===== */
-#nosotros { background: radial-gradient(circle at 50% 35%, rgba(224,189,115,0.03), transparent 60%); }
+#nosotros { background: radial-gradient(circle at 50% 35%, rgba(184,150,12,0.04), transparent 60%), var(--bg-elevated); }
 
 .about-grid {
   display: grid;
@@ -578,13 +579,13 @@
   flex-wrap: wrap;
 }
 
-.stat h4 { font-size: 2rem; color: var(--accent); margin-bottom: 4px; }
+.stat h4 { font-size: 2rem; color: var(--gold); margin-bottom: 4px; }
 .stat p { color: var(--text-secondary); font-size: 0.88rem; }
 
 .stat h4.count-flash { animation: statFlash 0.5s ease; }
 @keyframes statFlash {
   0%, 100% { text-shadow: none; }
-  50% { text-shadow: 0 0 20px var(--accent); }
+  50% { text-shadow: 0 0 20px var(--gold); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -598,7 +599,7 @@
   color: #fff;
   text-align: center;
 }
-.promo .eyebrow { color: var(--accent-soft); }
+.promo .eyebrow { color: var(--gold-light); }
 .promo h2 {
   font-size: clamp(1.6rem, 3.4vw, 2.3rem);
   text-transform: uppercase;
@@ -622,7 +623,7 @@
 }
 
 /* ===== Contacto ===== */
-#contacto { background: radial-gradient(circle at 50% 30%, rgba(224,189,115,0.03), transparent 60%); }
+#contacto { background: radial-gradient(circle at 50% 30%, rgba(184,150,12,0.03), transparent 60%), var(--bg); }
 
 .contact-grid {
   display: grid;
@@ -637,12 +638,12 @@
   height: 48px;
   min-width: 48px;
   border-radius: 10px;
-  background: var(--accent-bg);
+  background: var(--gold-bg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.contact-icon svg { width: 22px; height: 22px; stroke: var(--accent); }
+.contact-icon svg { width: 22px; height: 22px; stroke: var(--gold); }
 
 .contact-item h4 {
   font-size: 1.05rem;
@@ -656,7 +657,7 @@
   display: block;
   transition: color 0.2s ease;
 }
-.contact-item a:hover { color: var(--accent); }
+.contact-item a:hover { color: var(--gold); }
 
 .contact-map {
   border-radius: 12px;
@@ -665,7 +666,6 @@
   min-height: 340px;
 }
 .contact-map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; }
-.contact-map-dark iframe { filter: invert(92%) hue-rotate(180deg) contrast(85%) brightness(0.95); }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
