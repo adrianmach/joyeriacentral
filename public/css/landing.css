@@ -119,9 +119,16 @@
   color: rgba(255,255,255,0.85);
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   opacity: 0;
-  animation: heroFadeUp 0.7s ease forwards;
+  animation: scrollIndicatorFadeUp 0.7s ease forwards;
   animation-delay: 1.3s;
   z-index: 3;
+}
+/* Own keyframes (not heroFadeUp): that shared animation's `transform: translateY(0)`
+   end state would overwrite the translateX(-50%) centering above and knock the
+   indicator off-center once the fade-in finishes. */
+@keyframes scrollIndicatorFadeUp {
+  from { opacity: 0; transform: translate(-50%, 14px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }
 .scroll-indicator span {
   font-size: 0.72rem;
@@ -139,10 +146,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-eyebrow, .hero h1 .word, .hero-subtitle, .hero-buttons, .scroll-indicator {
+  .hero-eyebrow, .hero h1 .word, .hero-subtitle, .hero-buttons {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    clip-path: none !important;
+  }
+  /* .scroll-indicator keeps its own rule (not the shared transform:none reset
+     above) since it still needs translateX(-50%) to stay centered. */
+  .scroll-indicator {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
     clip-path: none !important;
   }
   .scroll-indicator svg { animation: none !important; }
