@@ -25,6 +25,23 @@
   border-bottom-color: var(--border);
 }
 
+/* Once stuck, collapse the pills/results-count so a tall filter bar
+   (many categories/tags) doesn't eat the viewport and hide product rows
+   while scrolling. */
+.catalog-toolbar .pills-row,
+.catalog-toolbar .results-count {
+  overflow: hidden;
+  max-height: 200px;
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease;
+}
+.catalog-toolbar.stuck .pills-row,
+.catalog-toolbar.stuck .results-count {
+  max-height: 0;
+  margin-top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .toolbar-row {
   display: flex;
   align-items: center;
@@ -158,14 +175,17 @@
 }
 
 /* ===== Grid ===== */
-.catalog-section { padding-top: 40px; }
+.catalog-section { padding-top: 0; }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   min-height: 200px;
-  transition: opacity 0.15s ease;
+  /* padding-top is set dynamically in catalog.js to match the live
+     .catalog-toolbar height, so products never start behind the sticky
+     bar regardless of how many pill rows it wraps into. */
+  transition: opacity 0.15s ease, padding-top 0.25s ease;
 }
 .product-grid.transitioning { opacity: 0; }
 

@@ -349,6 +349,7 @@
 
   function initSticky() {
     const toolbar = document.getElementById('catalogToolbar');
+    const grid = document.getElementById('productGrid');
     if (!toolbar) return;
     function stickyOffset() {
       const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 0;
@@ -360,6 +361,21 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+
+    // Keep the grid's top offset in sync with the toolbar's real, live
+    // height (pills wrap into a variable number of rows) so products
+    // never start underneath the sticky bar, on any viewport.
+    if (grid) {
+      function syncGridOffset() {
+        grid.style.paddingTop = (toolbar.offsetHeight + 24) + 'px';
+      }
+      if (window.ResizeObserver) {
+        new ResizeObserver(syncGridOffset).observe(toolbar);
+      } else {
+        window.addEventListener('resize', syncGridOffset);
+      }
+      syncGridOffset();
+    }
   }
 
   // ---------- Master render ----------
